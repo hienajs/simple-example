@@ -21,12 +21,12 @@ export async function create (table, dados) {
 
 export async function edit (table, id, dados) {
   // Valida
-  if (dados.senha) {
+  if (!util.validate.isEmpty(dados, 'senha')) {
     util.validate.forIsEmpty(dados, ['confirma_senha'])
     if (dados.senha !== dados.confirma_senha) throw new Error('Senha e Confirmação não conferem!')
     isSenha(dados.senha)
   }
-  if (dados.login) {
+  if (!util.validate.isEmpty(dados, 'login')) {
     await util.validate.existe(table, { login: dados.login }, id)
   }
 

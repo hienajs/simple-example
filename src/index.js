@@ -4,6 +4,6 @@ import modules from './modules'
 
 async function init () {
   let server = await hiena({ config, modules })
-  server.startRest()
+  server.startRestAndService()
 }
 init()

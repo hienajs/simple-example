@@ -1,3 +1,4 @@
+import { util } from 'hienajs'
 import { TarefaFilter } from './filter'
 import * as validate from './validate'
 
@@ -29,4 +30,20 @@ export async function edit ({ models, usuario, req }) {
 export async function del ({ models, usuario, req }) {
   await models.Tarefa.del(whereId(usuario, req.params.id))
   return { message: 'Registro excluido com sucesso!' }
+}
+
+export async function cleanOlds ({ models }) {
+  let date = new Date()
+  date.setDate(date.getDate() - 7)
+
+  let list = await models.Tarefa.findAll({
+    where: {
+      finalizada: true,
+      data_finalizada: { $lt: date }
+    }
+  })
+
+  for (const x in list) {
+    await list[x].destroy()
+  }
 }

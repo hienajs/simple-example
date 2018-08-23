@@ -14,13 +14,12 @@ export async function add (table, dados, usuario) {
 }
 
 export async function edit (table, id, dados, usuario) {
-  if (dados.descricao) {
+  if (!util.validate.isEmpty(dados, 'descricao')) {
     await util.validate.existe(table, {
       descricao: dados.descricao,
       finalizada: false,
       usuario_id: usuario.id
     }, id)
   }
-
   return dados
 }
