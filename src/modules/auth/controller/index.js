@@ -34,3 +34,13 @@ export async function logout ({ models, req }) {
   const { token } = validate.destroy(req.body)
   return models.Token.destroy(token)
 }
+
+export async function valida (context) {
+  // Get Token
+  let token = context.req.headers['x-access-token'] || context.req.query.token || context.req.body.token
+  if (!token) throw new Error('Acesso Não Permitido!')
+  let { info } = validate.valida(context.config, token)
+  if (!info) throw new Error('Acesso Não Permitido!')
+  token = await context.models.Token.valida(token)
+  context.usuario = { id: token.usuario_id }
+}

@@ -10,7 +10,7 @@ config.development = {
   },
   token: {
     secret: 'secret.key',
-    duration: 1
+    duration: 10
   }
 }
 

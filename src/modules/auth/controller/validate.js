@@ -15,3 +15,8 @@ export function destroy (dados) {
   util.validate.forIsEmpty(dados, ['token'])
   return dados
 }
+
+export function valida (config, token) {
+  let info = util.token.validaToken(config.token.secret, token)
+  return { info }
+}

@@ -6,13 +6,110 @@
 	},
 	"item": [
 		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"login\": \"raul\",\n\t\"senha\": \"raul.123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaW5pY2lhIjoxNTM1MDUzMTcwMDQzfQ.Rr5mVMgGDg42g7BGBBqz914HMsNQJvyz7_No9pn_YD4\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwaXJhIjoxNTM1MDUzNDc5NDY1fQ.OXy4WOxBDc51zb2TlBCnL6Zu61vDelGgW6ITmMKfb8s\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "usuario",
 			"item": [
 				{
 					"name": "list",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwaXJhIjoxNTM1MDU0OTg2MTU4fQ.XpgFGh4O8QWcN03JXCy8nRciQtHfmno2EO-uwWaobww"
+							}
+						],
 						"body": {},
 						"url": {
 							"raw": "http://localhost:3000/usuario?nome=S",
@@ -38,7 +135,12 @@
 					"name": "get",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwaXJhIjoxNTM1MDU0OTg2MTU4fQ.XpgFGh4O8QWcN03JXCy8nRciQtHfmno2EO-uwWaobww"
+							}
+						],
 						"body": {},
 						"url": {
 							"raw": "http://localhost:3000/usuario/1",
@@ -91,6 +193,10 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwaXJhIjoxNTM1MDU0OTg2MTU4fQ.XpgFGh4O8QWcN03JXCy8nRciQtHfmno2EO-uwWaobww"
 							}
 						],
 						"body": {
@@ -116,7 +222,12 @@
 					"name": "delete",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwaXJhIjoxNTM1MDU0OTg2MTU4fQ.XpgFGh4O8QWcN03JXCy8nRciQtHfmno2EO-uwWaobww"
+							}
+						],
 						"body": {},
 						"url": {
 							"raw": "http://localhost:3000/usuario/3",
