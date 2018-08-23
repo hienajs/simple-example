@@ -37,12 +37,6 @@ export default function (con) {
   }
 
   model.methods = function (db) {
-    model.findById = async function (id) {
-      let reg = await model.findOne({ where: { id } })
-      if (!reg) throw new Error('Registro não encontrado!')
-      return reg
-    }
-
     model.findByLogin = async function (login, senha) {
       let reg = await model.findActive({
         where: { login },
@@ -50,25 +44,6 @@ export default function (con) {
       })
       if (!reg || !reg.senhaCorreta(senha)) throw new Error('Usuário e/ou senha incorretos!')
       return reg.id
-    }
-
-    model.list = async function (filter) {
-      const list = await model.findQuery(filter, ['nome'], {
-        attributes: ['id', 'active', 'createdAt', 'nome', 'login']
-      })
-      const registros = await model.count(filter)
-      const pages = Math.ceil(registros / filter.itensPorPagina)
-      return { registros, pages, list }
-    }
-
-    model.edit = async function (id, dados) {
-      let reg = await model.findById(id)
-      return reg.update(dados)
-    }
-
-    model.del = async function (id) {
-      let reg = await model.findById(id)
-      return reg.destroy()
     }
   }
 

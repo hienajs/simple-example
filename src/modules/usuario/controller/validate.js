@@ -22,7 +22,7 @@ export async function create (table, dados) {
 export async function edit (table, id, dados) {
   // Valida
   if (dados.senha) {
-    util.validate.forIsEmpty(dados, ['senha_atual', 'confirma_senha'])
+    util.validate.forIsEmpty(dados, ['confirma_senha'])
     if (dados.senha !== dados.confirma_senha) throw new Error('Senha e Confirmação não conferem!')
     isSenha(dados.senha)
   }

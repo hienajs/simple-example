@@ -10,13 +10,17 @@ config.development = {
   },
   token: {
     secret: 'secret.key',
-    duration: 10
+    duration: 300
   }
 }
 
 // Merge production e test no develop
 config.test = util.object.merge({}, config.development, {})
-config.production = util.object.merge({}, config.development, {})
+config.production = util.object.merge({}, config.development, {
+  token: {
+    duration: 10
+  }
+})
 
 // Env
 const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
