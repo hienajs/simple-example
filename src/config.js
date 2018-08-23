@@ -7,6 +7,10 @@ config.development = {
   db: {
     dialect: 'postgres',
     url: 'postgres://example:example@localhost/todo'
+  },
+  token: {
+    secret: 'secret.key',
+    duration: 1
   }
 }
 

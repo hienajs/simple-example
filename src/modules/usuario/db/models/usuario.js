@@ -49,7 +49,7 @@ export default function (con) {
         attributes: ['id', 'senha']
       })
       if (!reg || !reg.senhaCorreta(senha)) throw new Error('Usuário e/ou senha incorretos!')
-      return reg
+      return reg.id
     }
 
     model.list = async function (filter) {
