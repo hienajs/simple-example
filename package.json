@@ -42,6 +42,6 @@
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
-    "hienajs": "^0.1.0"
+    "hienajs": "^0.3.0"
   }
 }
